@@ -98,7 +98,13 @@ public class KortSamling {
 		// TODO - START
 		// Husk: bruk Regler.MAKS_KORT_FARGE for å få antall kort per farge
 		
-		throw new UnsupportedOperationException(TODO.method());
+		for (Kortfarge farge : Kortfarge.values()) {
+			for (int v = 1; v <= Regler.MAKS_KORT_FARGE; v++) {
+				leggTil(new Kort(farge, v));
+			}
+		}
+	
+
 		// TODO - END
 	}
 
@@ -109,7 +115,8 @@ public class KortSamling {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		antall = 0;
+
 		// TODO - END
 	}
 	
@@ -123,7 +130,10 @@ public class KortSamling {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if (!erTom()) {
+			return samling[antall - 1];
+		}
+		return null;
 
 		// TODO - END
 		
@@ -139,7 +149,12 @@ public class KortSamling {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if (!erTom()) {
+			Kort kort = samling[antall - 1];
+			antall--;
+			return kort;
+		}
+		return null;
 		
 		// TODO - END
 	}
@@ -155,7 +170,12 @@ public class KortSamling {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		for (int i = 0; i < antall; i++) {
+			if (samling[i].lik(kort)) {
+				return true;
+			}
+		}
+		return false;
 		// return false;
 		// TODO - END
 		
@@ -175,7 +195,16 @@ public class KortSamling {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		for (int i = 0; i < antall; i++) {
+	        if (samling[i].lik(kort)) {
+	            for (int j = i; j < antall - 1; j++) {
+	                samling[j] = samling[j + 1];
+	            }
+	            antall--;
+	            return true;
+	        }
+	    }
+	    return false;
 
 		// TODO - END
 	}
@@ -190,7 +219,11 @@ public class KortSamling {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		Kort[] alleKort = new Kort[antall];
+	    for (int i = 0; i < antall; i++) {
+	        alleKort[i] = samling[i];
+	    }
+	    return alleKort;
 
 		// TODO - END
 	
