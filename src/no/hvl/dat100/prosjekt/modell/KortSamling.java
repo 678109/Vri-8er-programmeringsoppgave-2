@@ -7,7 +7,7 @@ import no.hvl.dat100.prosjekt.kontroll.dommer.Regler;
  * Struktur for å lagre ei samling kort. Kan lagre hele kortstokken. Det finnes
  * en konstant i klassen Regler som angir antall kort i hver av de 4 fargene. Når
  * programmet er ferdig settes denne til 13, men under utvikling / testing kan
- * det være praktisk å ha denne mindre.
+ * det være praktisk å ha denne mindre,.
  *
  */
 public class KortSamling {

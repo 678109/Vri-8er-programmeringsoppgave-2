@@ -17,8 +17,6 @@ public class KortUtils {
 	 */
 	
 	public static void sorter(KortSamling samling) {
-		
-		// TODO - START
 
 		Kort[] kortene = samling.getAllekort();
 		Arrays.sort(kortene);
@@ -27,8 +25,6 @@ public class KortUtils {
 		for (Kort kort : kortene) {
 			samling.leggTil(kort);
 		}
-
-		// TODO - END
 	}
 
 	/**
@@ -38,8 +34,6 @@ public class KortUtils {
 	 * 			samling av kort som skal stokkes.
 	 */
 	public static void stokk(KortSamling samling) {
-
-		// TODO - START
 
 		Random rand = new Random();
 		Kort[] kortene = samling.getAllekort();
@@ -57,7 +51,6 @@ public class KortUtils {
 			samling.leggTil(kort);
 		}
 	}
-		// TODO - END
-	}
+}
 
 
