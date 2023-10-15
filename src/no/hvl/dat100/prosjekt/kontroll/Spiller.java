@@ -103,6 +103,7 @@ public abstract class Spiller implements ISpiller {
 	public void trekker(Kort kort) {
 		
 		leggTilKort(kort);
+		antalltrekk ++;
 	}
 
 }
