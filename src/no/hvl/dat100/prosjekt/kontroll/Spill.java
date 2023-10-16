@@ -160,21 +160,20 @@ public class Spill {
 
 		// Hvis spilleren har et gyldig kort å spille.
 
-		for (Kort kort : spiller.getHand().getAllekort()) {
-			if (Regler.kanLeggeNed(kort, bord.seOversteBunkeTil())) {
-				return new Handling(HandlingsType.FORBI, null);
-			}
-		}
+		// Sjekk om spilleren har mulighet til å spille et kort
+	    for (Kort kort : spiller.getHand().getAllekort()) {
+	        if (Regler.kanLeggeNed(kort, bord.seOversteBunkeTil())) {
+	            return new Handling(HandlingsType.LEGGNED, kort);
+	        }
+	    }
 
-		// Hvis spilleren har trukket 3 ganger uten å spille et kort.
+	    // Hvis ikke, sjekk om spilleren kan trekke et kort
+	    if (spiller.getAntallTrekk() < Regler.maksTrekk()) {
+	        return new Handling(HandlingsType.TREKK, null);
+	    }
 
-		if (spiller.getAntallTrekk() >= 3) {
-			return new Handling(HandlingsType.FORBI, null);
-		}
-
-		// Ellers trekker spilleren et kort.
-
-		return new Handling(HandlingsType.TREKK, null);
+	    // Hvis ingen av de over er mulig, gå FORBI
+	    return new Handling(HandlingsType.FORBI, null);
 
 		// TODO - END
 
