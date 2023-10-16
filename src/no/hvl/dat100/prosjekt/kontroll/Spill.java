@@ -100,6 +100,7 @@ public class Spill {
 		bord.getBunkeFra().leggTilAlle();
 		bord.snuTilBunken();
 		delutKort();
+		bord.vendOversteFraBunke();
 
 		// TODO - END
 	}
@@ -237,17 +238,11 @@ public class Spill {
 	public Kort utforHandling(ISpiller spiller, Handling handling) {
 
 		// TODO - START
-		//FIKS, expected 1, actual 0
 		Kort kort = null;
-
-		// Hint: del opp i de tre mulige handlinger og vurder
-		// om noen andre private metoder i klassen kan brukes
-		// til å implementere denne metoden
 
 		switch (handling.getType()) {
 			case TREKK:
 				kort = trekkFraBunke(spiller);
-				spiller.trekker(kort);
 				break;
 			case LEGGNED:
 				kort = handling.getKort();
@@ -261,8 +256,7 @@ public class Spill {
 		}
 
 		return kort;
-
-		// TODO - END
+	// TODO - END
 	}
 
 }
