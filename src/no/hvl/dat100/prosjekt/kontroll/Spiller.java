@@ -36,6 +36,8 @@ public abstract class Spiller implements ISpiller {
         antalltrekk = 0;
         spiller = Spillere.INGEN;
 	}
+	// Jeg oppretter en ny tom 'KortSamling' for spillerens hånd. Så setter jeg antall
+	// trekk lik 0, og setter spillerens identitet til 'INGEN'. 
 
 	/**
 	 * Konstruktør der vi kan sette hvilken spiller det er (NORD, SYD eller
@@ -50,55 +52,67 @@ public abstract class Spiller implements ISpiller {
         antalltrekk = 0;
         this.spiller = spiller;
 	}
+	// Her oppretter jeg en ny tom 'KortSamling' for spillerens hånd. Deretter setter
+	// jeg antall trekk lik 0, og setter spillerens identitet til den gitte parameteren. 
 
 	public int getAntallKort() {
 		
 		return hand.getAntalKort();
 	}
+	// Returnerer antallet kort i spillerens hånd ved å kalle metoden 'getAntalKort'
+	// fra objektet 'hand'. 
 
 	public KortSamling getHand() {
 		
 		return hand;
 	}
+	// Her returnerer jeg spillerens hånd. 
 
 	public int getAntallTrekk() {
 		
 		return antalltrekk;
 	}
+	// Her returnerer jeg verdien av 'antallTrekk'. 
 
 	public Spillere hvem() {
 		
 		return spiller;
 		
 	}
+	// Her returnerer jeg spillerens identitet. 
 
 	public void setAntallTrekk(int t) {
 		
 		antalltrekk = t;	
 		}
+	// Her oppdaterer jeg 'antallTrekk' med gitt verdi 't'. 
 
 	public boolean erFerdig() {
 		
 		return hand.erTom();
 		
 	}
+	// Her sjekker jeg om spillerens hånd er tom, ved å returnere 'true' eller 'false'. 
 
 	public void leggTilKort(Kort kort) {
 		
 		hand.leggTil(kort);
 		
 	}
+	// Her legger jeg til 'Kort' i spillerens hånd. 
 
 	public void fjernKort(Kort kort) {
 		
 		hand.fjern(kort);
 		
 	}
+	// Her fjerner jeg 'Kort' fra spillerens hånd. 
 
 	public void fjernAlleKort() {
 		
 		hand.fjernAlle();
 	}
+	// Her fjerner jeg alle 'Kort' fra spillerens hånd. 
 
 	public void trekker(Kort kort) {
 		
@@ -107,3 +121,4 @@ public abstract class Spiller implements ISpiller {
 	}
 
 }
+// Her legger jeg til 'Kort' i spillerens hånd, og øker 'antallTrekk' med 1. 
