@@ -96,8 +96,9 @@ public class Spill {
 	public void start() {
 		
 		// TODO - START
-		
+		// FIKS expected 1, actual 0
 		bord = new Bord(); 
+		KortUtils.stokk(bord.getBunkeFra());
 		delutKort(); 
 		bord.leggNedBunkeTil(bord.taOversteFraBunke()); 
 		
@@ -133,7 +134,7 @@ public class Spill {
 	public Kort trekkFraBunke(ISpiller spiller) {
 
 		// TODO - START
-			
+		// FIKS expected spar3, fikk ruter2
 		Kort kort = bord.taOversteFraBunke(); 
 		
 		if (kort == null) {
@@ -240,6 +241,7 @@ public class Spill {
 	public Kort utforHandling(ISpiller spiller, Handling handling) {
 
 		// TODO - START
+		//FIKS, expected 1, actual 0
 		Kort kort = null;
 
 		// Hint: del opp i de tre mulige handlinger og vurder 
@@ -249,10 +251,13 @@ public class Spill {
 		switch (handling.getType()) {
 		case TREKK: 
 			kort = trekkFraBunke(spiller); 
+			spiller.trekker(kort); 
 			break; 
 		case LEGGNED: 
 			kort = handling.getKort(); 
-			leggnedKort(spiller, kort); 
+			if (leggnedKort(spiller, kort)) {
+				spiller.setAntallTrekk(0);  
+			}
 			break; 
 		case FORBI: 
 			forbiSpiller(spiller); 
