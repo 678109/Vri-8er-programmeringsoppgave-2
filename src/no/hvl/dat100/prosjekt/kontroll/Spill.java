@@ -105,7 +105,7 @@ public class Spill {
 	}
 
 	/**
-	 * Deler ut kort til nord og syd.
+	 * Deler ut kort til nord og syd,.
 	 *
 	 */
 	private void delutKort() {
