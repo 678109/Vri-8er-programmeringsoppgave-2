@@ -24,7 +24,10 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.constructor("Bord"));
+		bunkeFra = new KortSamling();
+		bunkeTil = new KortSamling();
+		
+		bunkeFra.leggTilAlle();
 		// TODO - END
 	}
 	
@@ -59,7 +62,7 @@ public class Bord {
 		
 		// TODO - START
 				
-		throw new UnsupportedOperationException(TODO.method());
+		return bunkeTil.erTom(); 
 
 		// TODO - END
 	}
@@ -73,7 +76,7 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return bunkeFra.erTom(); 
 	
 		// TODO - END
 		
@@ -88,7 +91,7 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return bunkeFra.getAntalKort(); 
 
 		// TODO - END
 	}
@@ -102,7 +105,7 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return bunkeTil.getAntalKort(); 
 
 		// TODO - END
 	}
@@ -115,7 +118,9 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if (!bunkeFra.erTom()) {
+			bunkeTil.leggTil(bunkeFra.taSiste());
+		}
 		// TODO - END
 		
 	}
@@ -130,8 +135,12 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
-
+		if (!bunkeFra.erTom()) {
+			return bunkeFra.taSiste(); 
+		}
+		
+		return null; 
+		
 		// TODO - END
 	}
 	
@@ -145,7 +154,11 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if (!bunkeTil.erTom()) {
+			return bunkeTil.seSiste(); 
+		}
+		
+		return null; 
 
 		// TODO - END
 	}
@@ -160,7 +173,16 @@ public class Bord {
 
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if (!bunkeTil.erTom() && !bunkeTil.erTom()) {
+			Kort toppKort = bunkeTil.taSiste();
+			while (!bunkeTil.erTom()) {
+				bunkeFra.leggTil(bunkeTil.taSiste());
+			}
+			KortUtils.stokk(bunkeFra);
+			bunkeTil.leggTil(toppKort);
+		}
+		
+		
 		// TODO - END
 	}
 		
@@ -175,7 +197,8 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		bunkeTil.leggTil(k);
+		
 		// TODO - END
 				
 	}
