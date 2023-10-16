@@ -39,46 +39,35 @@ public class SydSpiller extends Spiller {
 	 */
 	@Override
 	public Handling nesteHandling(Kort topp) {
-		// ArrayLister for de kort vi har og kan spille
-		Kort[] hand = getHand().getAllekort();
-		KortSamling lovlige = new KortSamling();
-		KortSamling attere = new KortSamling();
+		// ArrayList for de kort vi har og kan spille
+	    Kort[] hand = getHand().getAllekort();
+	    KortSamling lovlige = new KortSamling();
 
-			// Gå igjennom kort å finn ut hvilke som kan spilles
-		for (Kort k : hand) {
-			if (Regler.kanLeggeNed(k, topp)) {
-				if (Regler.atter(k)) {
-					attere.leggTil(k);
-			    } else {
-			    	lovlige.leggTil(k);
-				}
-			}
-		}
+	    // Gå igjennom kort å finn ut hvilke som kan spilles
+	    for (Kort k : hand) {
+	        if (Regler.kanLeggeNed(k, topp)) {
+	            lovlige.leggTil(k);
+	        }
+	    }
 
-		Kort spill = null;
-		Kort[] spillFra = null;
+	    Kort spill = null;
+	    Kort[] spillFra = null;
 
-		if (!lovlige.erTom()) {
-			spillFra = lovlige.getAllekort();
-		} else if (!attere.erTom())  {
-			spillFra = attere.getAllekort();
-		}
+	    if (!lovlige.erTom()) {
+	        spillFra = lovlige.getAllekort();
+	    }
 
-		Handling handling = null;
-				
-		if (spillFra != null && spillFra.length > 0) {
-		    spill = spillFra[0];
-		    handling = new Handling(HandlingsType.LEGGNED, spill);
-		    
-		} else if (getAntallTrekk() < Regler.maksTrekk()) {
-			
-		    handling = new Handling(HandlingsType.TREKK, null);
-		} else {
-			
-		    handling = new Handling(HandlingsType.FORBI, null);
-		}
+	    Handling handling = null;
 
-		return handling;
+	    if (spillFra != null && spillFra.length > 0) {
+	        spill = spillFra[0];
+	        handling = new Handling(HandlingsType.LEGGNED, spill);
+	    } else if (getAntallTrekk() < Regler.maksTrekk()) {
+	        handling = new Handling(HandlingsType.TREKK, null);
+	    } else {
+	        handling = new Handling(HandlingsType.FORBI, null);
+	    }
+
+	    return handling;
 	}
-
 }
