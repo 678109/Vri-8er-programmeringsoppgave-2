@@ -24,7 +24,9 @@ public class KortSamling {
 
 		samling = new Kort[MAKS_KORT];
 		antall = 0;
-	}
+	} 
+	// Denne konstruktøren oppretter en ny array av typen 'Kort', med en størrelse definert av kosntanten 'MAKS_KORT'. Arrayen lagres i variablen 'samling'. 
+	// antallet settes lik 0 ved start, for å holde styr på hvor mange kort som er lagt til i samlingen. Altså hvor mange plasser i arrayen som er okkupert. 
 
 	/**
 	 * Returnerer en tabell med kortene i samlinga. Tabellen trenger ikke være
@@ -34,11 +36,12 @@ public class KortSamling {
 	 * kortene utenfor, anbefales metoden getAlleKort().
 	 *
 	 * @return tabell av kort.
+	 *
 	 */
-	public Kort[] getSamling() {
+	public Kort[] getSamling() {		
 
 		return samling;
-	}
+	} 
 
 	/**
 	 * Antall kort i samlingen.
@@ -47,8 +50,10 @@ public class KortSamling {
 	 */
 	public int getAntalKort() {
 
-		return antall;
-	}
+		return antall;					
+	} 
+	// 'int' indikerer at metoden vil returnere en verdi av typen 'int'. 
+	// 'return antall' returnerer verdien av variablen 'antall', altså hvor mange kort som er med i samlingen. 
 
 	/**
 	 * Sjekker om samlinga er tom.
@@ -57,8 +62,10 @@ public class KortSamling {
 	 */
 	public boolean erTom() {
 
-		return antall == 0;
-	}
+		return antall == 0;				
+	} 
+	// 'boolean' indikerer at metoden vil returnere en verdi av typen 'boolean'. 
+	// Så metoden sjekker om samlingen av kort er tom, og returnerer en sann eller usann verdi. 
 
 	/**
 	 * Legg et kort til samlinga.
@@ -69,10 +76,14 @@ public class KortSamling {
 	public void leggTil(Kort kort) {
 
 		if (antall < MAKS_KORT) {
-			samling[antall] = kort;
+			samling[antall] = kort;		
 			antall++;
 		}
-	}
+	} 
+	// 'void' betyr at metoden ikke returnerer noen verdi. Her brukes if-betingelsen, som kontrollerer om 
+	// antallet kort i samlingen er mindre enn den maksimale tillatte mengden kort 'MAKS_KORT'. 
+	// Dersom betingelsen er oppfylt, legges det til 'kort' i arrayen 'samling' på neste ledige posisjon. 
+	// Etter at et kort er lagt til i samlingen, øker vi variabelen 'antall' med 1 (antall++). 
 
 	/**
 	 * Legger alle korta (hele kortstokken) til samlinga. Korta vil være sortert
@@ -85,7 +96,11 @@ public class KortSamling {
 				leggTil(new Kort(farge, a));
 			}
 		}
-	}
+	} 
+	// Her brukes det en for-løkke som itererer gjennom alle mulige verdier i typen 'Kortfarge'. 
+	// Den begynner med verdien 1, og øker med 1 for hver iterasjon, helt til vi når verdien av MAKS_KORT_FARGE. 
+	// For hver kombinasjon av 'farge' og 'a' (kortnummer), opprettes et nytt 'Kort' og legges til i samlingen
+	// ved hjelp av den definerte 'leggTil'-metoden. 
 
 	/**
 	 * Fjerner alle korta fra samlinga slik at den blir tom.
@@ -97,6 +112,9 @@ public class KortSamling {
 		}
 		antall = 0;
 	}
+	// Denne metoden benytter en for-løkke som itererer fra 0 til verdien av 'samling' ved indeksen 'a' til 'null'. 
+	// Dette fjerner referansen til 'Kort' i den posisjonen, slik at kortet ikke lengre er en del av samlingen. 
+	// Etter at alle kortene er fjernet fra samlingen, blir variablen 'antall' satt til 0. 
 
 	/**
 	 * Ser på siste kortet i samlinga.
@@ -108,10 +126,17 @@ public class KortSamling {
 
 		if (antall > 0) {
 			return samling[antall - 1];
-		}else {
+		}
+		else {
 			return null;
 		}
 	}
+	// Her brukes betingelseskontrollen if-else. Den sjekker om det er noen kort i samlingen (hvis antall > 0). 
+	// Hvis det stemmer, vil koden innenfor 'if' bli kjørt. Hvis ikke, vil koden i 'else' kjøres. 
+	// Hvis det er kort i samlingen, (antall > 0), vil det siste kortet i samlingen returneres. 
+	// Indeksen til det siste kortet i arrayen 'samling' vil være 'antall - 1'. 
+	// Hvis det ikke er noen kort i samlingen, vil metoden returnere 'null', noe som indikerer at det ikke er
+	// kort i samlingen. 
 
 	/**
 	 * Tek ut siste kort fra samlinga.
@@ -130,6 +155,14 @@ public class KortSamling {
 			return null;
 		}
 	}
+	// Her brukes betingelseskontrollen if-else, som sjekker om det er noen kort i samlingen (antall > 0).
+	// Hvis det er kort i samlingen, kjøres koden i 'if', hvis ikke kjøres koden i 'else'. 
+	// Dersom det er kort i samlingen, hentes referansen til det siste kortet i samlingen og lagrer
+	// den i en likal variabel kalt 'sisteKort'. Deretter, fjernes referansen til det siste kortet fra samlingen
+	// ved å sette verdien av den aktuelle posisjonen i arrayen til 'null'. Dette betyr at kortet er fjernet 
+	// fra samlingen, men vi har fortsatt en referanse til det i den lokale variabelen 'sisteKort'. 
+	// Så reduseres verdien 'antall' med 1, siden vi fjernet et kort. Til slutt, returneres referansen til det
+	// kortet vi nettopp fjernet fra samlingen. Dersom det ikke er noen kort i samlingen, returneres 'null'. 
 
 	/**
 	 * Undersøker om et kort finst i samlinga.
@@ -147,6 +180,13 @@ public class KortSamling {
 		}
 		return false;
 	}
+	// Her benyttes det en for-løkke, som går gjennom hver posisjon i samlingen, opp til verdien av 'antall'. 
+	// Betingelseskontrollen sammenligner hvert kort i samlingen med det gitte kortet som er sendt inn som parameter. 
+	// Den bruker metoden 'equals', for å sammenligne to kortobjekter basert på deres farge og nummer. 
+	// Hvis koden finner et kort i samlingen som samsvarer med det gitte kortet, vil den returnere 'true' umiddelbart, 
+	// noe som indikerer at samlingen inneholder det gitte kortet. 
+	// Etter at for-løkken har kjørt, og hvis ingen av kortene i samlingen samsvarer med det gitte kortet, vil 
+	// metoden returnere 'false'. 
 
 	/**
 	 * Fjernar et kort frå samlinga. Dersom kortet ikke finnest i samlinga,
@@ -172,6 +212,16 @@ public class KortSamling {
 		}
 		return false;
 	}
+	// Denne metoden har en ytre for-løkke som itererer gjennom samlingen opp til verdien av 'antall'. 
+	// Innenfor er det en betingelseskontroll som sammenligner hvert kort i samlingen med det gitte
+	// kortet. Hvis et kort i samlingen matcher det gitte kortet, kjøres det ei indre for-løkke. 
+	// Denne for-løkken, som starter fra indeksen hvor det matchende kortet ble funnet ('i'). 
+	// Den har som mål å "forskyve" alle kortene etter det matchende kortet èn plass til venstre
+	// i arrayen. Så forskyves det neste kortet i samlingen til den nåværende posisjonen. 
+	// Etter at alle kortene er forskjøvetm settes den siste plassen i samlingen til 'null'. 
+	// Så reduseres 'antall' med 1, fordi vi nettopp har fjernet et kort fra samlingen. 
+	// Returnerer 'true' for å indikere at kortet ble funnet og fjernet fra samlingen. 
+	// Returnerer false hvis for-løkken fullføres uten at et matchende kort ble funnet. 
 
 	/**
 	 * Gir kortene som en tabell av samme lengde som antall kort i samlingen
@@ -188,3 +238,9 @@ public class KortSamling {
 		return alleKort;
 	}
 }
+// Dette oppretter en ny array av 'Kort'-objekter med størrelsen av 'antall', som er antallet
+// faktiske kort i samlingen. Denne nye arrayen vil inneholde de samme kortene som er i samlingen, men vil
+// ha størrelsen tilsvarende antall faktiske kort. Så er det en for-løkke som itererer gjennom alle
+// plassene i 'samling' opp til 'antall'. Hvert kort blir kopiert fra 'samling', over til den nye 
+// 'alleKort'-arrayen. Til slutt returnerer metoden 'alleKort'-arrayen, som nå inneholder alle kortene fra
+// samlingen. 
