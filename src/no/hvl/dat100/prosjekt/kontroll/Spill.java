@@ -39,6 +39,9 @@ public class Spill {
 		// TODO - END
 
 	}
+	// Jeg oppretter en ny spiller kalt 'Nord' av typen 'NordSpiller'. 
+	// Jeg oppretter en ny spiller kalt 'Syd' av typen 'SydSpiller'. 
+	// Så initialiserer jeg et nytt bord. 
 
 	/**
 	 * Gir referanse/peker til bord.
@@ -54,6 +57,7 @@ public class Spill {
 		// TODO - END
 
 	}
+	// Her returnerer jeg objektet 'Bord'. 
 
 	/**
 	 * Gir referanse/peker til syd spilleren.
@@ -69,6 +73,7 @@ public class Spill {
 		// TODO - END
 
 	}
+	// Her returnerer jeg spiller 'Syd'. 
 
 	/**
 	 * Gir referanse/peker til nord.
@@ -83,6 +88,7 @@ public class Spill {
 
 		// TODO - END
 	}
+	// Her returnerer jeg spiller 'Nord'. 
 
 	/**
 	 * Metoden oppretter to spillere, nord og syd. Det opprettes to bunker, fra
@@ -104,6 +110,9 @@ public class Spill {
 
 		// TODO - END
 	}
+	// Først legger jeg til alle kortene til 'bunkeFra'. Deretter, snur jeg 'bunkeTil'. 
+	// Så deler jeg ut kortene til spillerne, og vender det øverste kortet fra 'bunkeFra'
+	// til 'bunkeTil'. 
 
 	/**
 	 * Deler ut kort til nord og syd,.
@@ -120,6 +129,8 @@ public class Spill {
 
 		// TODO - END
 	}
+	// Jeg bruker ei for-løkke til å dele ut antallet 'Kort', bestemt av 'ANTALL_KORT_START', 
+	// til både spiller 'Nord' og 'Syd'. 
 
 	/**
 	 * Trekker et kort fra fra-bunken til spilleren gitt som parameter. Om
@@ -144,6 +155,10 @@ public class Spill {
 
 		// TODO - END
 	}
+	// Jeg trekker det første kortet ved å kalle på metoden 'bord.taOversteFraBunke', og kortet
+	// blir lagret i variabelen 'kort'. Deretter bruker jeg en if-setning til å snu 'bunkeTil'
+	// hvis 'bunkeFra' går tom. Deretter informeres spillerobjektet at det har trukket det gitte
+	// kortet, ved å kalle på metoden 'spiller.trekker(kort)'. 
 
 	/**
 	 * Gir neste handling for en spiller (spilt et kort, trekker et kort, forbi)
@@ -178,6 +193,15 @@ public class Spill {
 		// TODO - END
 
 	}
+	// Jeg henter inn alle kortene på spillerens hånd med metodene 'getAllekort' og
+	// 'getHand'. Jeg bruker ei if-setning til å sjekke om spilleren har kort som kan 
+	// legges ned i henhold til øverste kort i 'bunkeTil' og spillets 'Regler'. 
+	// Hvis det går, returnerer den en ny 'Handling' av type 'LEGGNED'. Hvis spilleren ikke 
+	// har kort som kan legges ned, utføres ikke koden innenfor for-løkken. 
+	// Vi hopper videre til if-setningen som sjekker om spilleren kan utføre handlingen 
+	// 'TREKK'. Så lenge spilleren ikke overskrider 'maksTrekk' i 'Regler', kan spilleren 
+	// trekke inn kort. Hvis ikke, hopper vi til handlingstypen 'FORBI', hvor spilleren melder
+	// pass. 
 
 	/**
 	 * Metoden spiller et kort. Den sjekker at spiller har kortet. Dersom det er
@@ -206,6 +230,14 @@ public class Spill {
 
 		// TODO - END
 	}
+	// Jeg bruker ei if-setning til å sjekke om spilleren faktisk har det angitte kortet
+	// i hånden. Hvis spilleren har kortet, blir kortet fjernet fra spillerens hånd. 
+	// Kortet som ble fjernet, legges deretter ned på 'bunkeTil'. 
+	// Antallet ganger spilleren har trukket et kort blir nullstilt, for å holde styr på 
+	// hvor mange ganger en spiller har trukket et kort i sin tur. 
+	// Hvis if-setningen er oppfylt, returnerer koden i løkka 'true'. 
+	// Hvis spilleren ikke hadde kortet i hånden i første omgang, kjøres ikke koden i if-løkka
+	// og metoden returnerer 'false'. 
 
 	/**
 	 * Metode for å si forbi. Må nullstille antall ganger spilleren har trukket
@@ -222,6 +254,8 @@ public class Spill {
 
 		// TODO - END
 	}
+	// Her setter jeg antallet ganger spilleren har trukket et kort til 0, idet spilleren
+	// melder pass. 
 
 	/**
 	 * Metode for å utføre en handling (trekke, spille, forbi). Dersom handling
@@ -257,5 +291,18 @@ public class Spill {
 		return kort;
 	// TODO - END
 	}
+	// Jeg begynner med å initialisere variabelen 'kort' lik 0. Så bruker jeg en switch-setning
+	// til å sjekke hvilken type handling som er gitt som parameter. Handlingens type hentes ved
+	// 'handling.getType'. 
+	// Når handlingstypen er 'TREKK', blir casen 'TREKK'. Her kaller jeg metoden 'trekkFraBunke'
+	// med spilleren som parameter, og lagrer verdien i variabelen 'kort'. 
+	// Når handlingstypen er 'LEGGNED', blir casen 'LEGGNED. Først henter jeg kortet som skal 
+	// legges ned fra objektet 'handling'. Deretter bruker jeg en if-setning til å kalle på metoden
+	// 'leggNedKort'. Hvis dette er vellykket, og metoden returnerer 'true', setter vi antall ganger
+	// spilleren har trukket et kort lik 0. 
+	// Når handlingstypen er 'FORBI', blir casen 'FORBI'. I denne casen kaller vi på metoden
+	// 'forbiSpiller' med spilleren som parameter. Spilleren melder pass. 
+	// Etter å ha sjekket handlingstypen og utført den tilsvarende handligen, returnerer vi variabelen
+	// 'kort'. Dette kan være det kortet spilleren spilte, eller 'null' hvis spilleren meldte pass. 
 
 }

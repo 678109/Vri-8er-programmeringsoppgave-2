@@ -30,6 +30,9 @@ public class Bord {
 		bunkeFra.leggTilAlle();
 		// TODO - END
 	}
+	// Jeg oppretter to nye 'KortSamling'-objekter, èn for 'bunkeFra' og èn for 'bunkeTil'. 
+	// Dette representerer de to bunker med kort på bordet. Så legger jeg til alle kortene i
+	// 'bunkeFra', ved å kalle på 'leggTilAlle'-metoden. 
 	
 	/**
 	 * Gir peker/referanse til til-bunken.
@@ -66,6 +69,9 @@ public class Bord {
 
 		// TODO - END
 	}
+	// Her kaller jeg metoden 'erTom()' på 'bunkeTil'-objektet. Dersom 'bunkeTil' er
+	// tom, vil 'erTom()' returnere true. Hvis det fortsatt er kort igjen, returnerer
+	// den false. 
 
 	/**
 	 * Sjekker om fra-bunken er tom.
@@ -81,6 +87,8 @@ public class Bord {
 		// TODO - END
 		
 	}
+	// Denne metoden er veldig lik den forrige. Den gjør samme operasjon som 'bunkeTilTom', 
+	// men på 'bunkeFra'-objektet istedet. 
 	
 	/**
 	 * Gir antall kort i fra-bunken.
@@ -95,6 +103,7 @@ public class Bord {
 
 		// TODO - END
 	}
+	// Her returneres antallet kort i 'bunkeFra'-objektet, ved å kalle inn metoden 'getAntalKort()'. 
 
 	/**
 	 * Gir antall kort i til-bunken.
@@ -109,6 +118,7 @@ public class Bord {
 
 		// TODO - END
 	}
+	// Her returneres antallet kort i 'bunkeTil'-objektet, ved å kalle inn metoden 'getAntalKort()'. 
 	
 	/**
 	 * Tar øverste kortet fra fra-bunken og legger dettte til til-bunken (med
@@ -124,6 +134,12 @@ public class Bord {
 		// TODO - END
 		
 	}
+	// Her blir det utført en sjekk ved hjelp av metoden 'erTom' på 'bunkeFra'-objektet. 
+	// Hvis 'bunkeFra' ikke er tom, vil koden i if-løkken bli utført. Hvis bunken er tom, 
+	// vil ingenting skje. I if-løkken utføres det to operasjoner. Vi kaller på metoden
+	// 'taSiste' for 'bunkeFra', som returnerer det øverste kortet fra 'bunkeFra', men 
+	// fjerner det også fra bunken. Så, tar vi kortet som ble hentet fra 'bunkeFra' og 
+	// legger det til 'bunkeTil' ved hjelp av metoden 'leggTil'. 
 		
 	/**
 	 * Tar øverste kortet fra fra-bunken.
@@ -143,6 +159,11 @@ public class Bord {
 		
 		// TODO - END
 	}
+	// if-setningen sjekker om 'bunkeFra' ikke er tom. Hvis den ikke er tom, vil koden
+	// kjøre. I tilfellet hvor den ikke er tom, brukes metoden 'taSiste' fra 
+	// 'KortSamling'-klassen, for å hente og fjerne det øverste kortet fra 'bunkeFra'. 
+	// Deretter returnerer den dette kortet. Hvis 'bunkeFra' er tom, kjøres ikke if-
+	// setningen, og metoden vil returnere 'null' som indikerer at det ikke er noe kort. 
 	
 	/**
 	 * Metode som leser øverste kortet i til-bunken. Kortet vil fremdeles være
@@ -162,6 +183,10 @@ public class Bord {
 
 		// TODO - END
 	}
+	// if-setningen sjekker om 'bunkeTil' ikke er tom. Hvis den inneholder kort, vil koden
+	// kjøre. I det tilfellet, bruker vi metoden 'seSiste' fra 'KortSamling'-klassen for å 
+	// lese det øverste kortet fra 'bunkeTil' uten å fjerne det. Metoden vil deretter 
+	// returnere dette kortet. Hvis bunken er tom, returnerer metoden 'null'. 
 	
 	/**
 	 * Når fra-bunken blir tom, tar man vare på kortet pÂ toppen av til-bunken.
@@ -173,7 +198,7 @@ public class Bord {
 
 		// TODO - START
 		
-		if (!bunkeTil.erTom() && !bunkeTil.erTom()) {
+		if (!bunkeTil.erTom() && !bunkeFra.erTom()) {
 			Kort toppKort = bunkeTil.taSiste();
 			while (!bunkeTil.erTom()) {
 				bunkeFra.leggTil(bunkeTil.taSiste());
@@ -185,6 +210,12 @@ public class Bord {
 		
 		// TODO - END
 	}
+	// if-setningen sjekker om 'bunkeTil' og 'bunkeFra' ikke er tomme. Hvis begge bunkene
+	// ikke er tomme, vil koden kjøre. Når den kjører, tas det øverste kortet fra 
+	// 'bunkeTil' og lagrer det i variabelen 'toppKort'. Så lenge 'bunkeTil' ikke er tom, 
+	// tar denne while-løkken det øverste kortet fra 'bunkeTil' og legger det i 'bunkeFra'. 
+	// Deretter stokkes 'bunkeFra'. Til slutt legges det tidligere øverste kortet fra 
+	// 'bunkeTil', som ble lagret i 'toppKort', tilbake på toppen av 'bunkeTil'. 
 		
 	/**
 	 * Metode som legger et kort i til-bunken. 
@@ -203,3 +234,5 @@ public class Bord {
 				
 	}
 }
+// Her kaller jeg inn metoden 'leggTil' på objektet 'bunkeTil', for å legge det gitte
+// kortet 'k' til bunken. 
