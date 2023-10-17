@@ -45,7 +45,9 @@ public class SydSpiller extends Spiller {
 
 	    // Gå igjennom kort å finn ut hvilke som kan spilles
 	    for (Kort k : hand) {
+	        // Sjekk om kortet 'k' kan legges ned på 'topp'
 	        if (Regler.kanLeggeNed(k, topp)) {
+	            // Legg til lovlige kort i samlingen
 	            lovlige.leggTil(k);
 	        }
 	    }
@@ -53,18 +55,26 @@ public class SydSpiller extends Spiller {
 	    Kort spill = null;
 	    Kort[] spillFra = null;
 
+	    // Hvis det finnes lovlige kort å spille
 	    if (!lovlige.erTom()) {
 	        spillFra = lovlige.getAllekort();
 	    }
 
 	    Handling handling = null;
 
+	    // Hvis det er lovlige kort å spille
 	    if (spillFra != null && spillFra.length > 0) {
+	        // Velg det første lovlige kortet i samlingen for å spille
 	        spill = spillFra[0];
+	        // Lag en håndteringshandling for å legge ned dette kortet
 	        handling = new Handling(HandlingsType.LEGGNED, spill);
 	    } else if (getAntallTrekk() < Regler.maksTrekk()) {
+	        // Hvis det ikke er lovlige kort å spille, men det er flere trekk igjen
+	        // Lag en håndteringshandling for å trekke et nytt kort
 	        handling = new Handling(HandlingsType.TREKK, null);
 	    } else {
+	        // Hvis det ikke er lovlige kort å spille og maks trekk er nådd
+	        // Lag en håndteringshandling for å gå forbi
 	        handling = new Handling(HandlingsType.FORBI, null);
 	    }
 
